@@ -239,7 +239,7 @@ do
 done
 kubectl taint nodes $nodeid node-role.kubernetes.io/control-plane=:NoSchedule- 2>&1 > /dev/null
 
-MY_DATASTORE_URL=$(govc datastore.info localnvme | grep 'URL:' | awk '{print $2}')
+MY_DATASTORE_URL=$(govc datastore.info $MY_DATASTORE | grep 'URL:' | awk '{print $2}')
 cat <<EOF > storageclass.yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
